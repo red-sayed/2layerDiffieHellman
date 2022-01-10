@@ -6,4 +6,4 @@
 
 ## What is it?
 
-This is an implementation of _DiifieHellman_ key exchange _protocol_ that works with _very long inegers_(19.729 chars long, can work with bigger ones, look at the screenshot that is placed above this text or below). You also can find an _example file_ at this repository with it's description. It is a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
+This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_ key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones without any problems). You also can find an _example file(main.cpp)_ at this repository with it's description. It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
