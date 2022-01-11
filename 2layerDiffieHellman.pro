@@ -8,7 +8,6 @@ SOURCES += \
 
 HEADERS += \
     2layerDiffieHellman/2layerDiffieHellman.h \
-    2layerDiffieHellman/Randomizer.h \
     2layerDiffieHellman/RedTypes.h
 
 macx {

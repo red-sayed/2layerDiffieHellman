@@ -51,12 +51,16 @@ namespace Red {
 
             /// x = G**a mod P
 
-            INT_SIZE  m_G    = 2, // Base for part 1.
-                      m_Pp1  = 5, // P num for part 1.
-                     *m_P,        // P num.
-                     *m_a1,       // Secret num for part 1.
-                     *m_a2;       // Secret num for part 2.
+            /// Local vars.
+            const INT_SIZE m_G    = 2, // Base for part 1.
+                           m_Pp1  = 5; // P num for part 1.
 
+            /// User's vars.
+            INT_SIZE *m_P,  // P num.
+                     *m_a1, // Secret num for part 1.
+                     *m_a2; // Secret num for part 2.
+
+            /// Local var.
             INT_SIZE m_base; // Base for part 2.
 
 
@@ -317,10 +321,12 @@ namespace Red {
                      INT_SIZE *SecretNum2,
                      std::string_view Mode = "manual") {
 
-                m_P    = ModificatedNum;
-                m_a1   = SecretNum1;
-                m_a2   = SecretNum2;
-                m_mode = Mode;
+                this->m_P    = ModificatedNum;
+                this->m_a1   = SecretNum1;
+                this->m_a2   = SecretNum2;
+                this->m_mode = Mode;
+
+                // m_base clears itself when calculates.
             }
 
             /**

@@ -49,6 +49,12 @@ int main() {
     std::cout << "Secret Key for the Bob is   : " << *Sb << std::endl;
     std::cout << std::endl << std::endl;
 
+    // How to use one more time the 2lDH object?
+    //
+    // Like this:
+    //
+    // Alice.Set(-newP-,-newA1-,-newA2-,-modeIfNeeded-);
+
     // Freeing up memory.
     delete Pa;
     delete Pb;
