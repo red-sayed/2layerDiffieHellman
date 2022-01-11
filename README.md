@@ -78,4 +78,4 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but now, our _base num_ is hidden, and this _DH_ is ~x2 more secure(see at standards and tests).
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but now, our _base num_ is hidden, and this _DH_ is ~x2 more secure(check out standards and tests).
