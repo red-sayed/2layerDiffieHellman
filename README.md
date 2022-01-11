@@ -25,9 +25,9 @@ Diffie-Hellman(colors)
 \___/          \___/
  _|_            _|_
 /m*a\          /m*b\ - 3 Step. We're getting mixed keys.
-\___/\____    /\___/
- ___   __|___/  ___
-/m*b \/  |_____/m*a\ - 4 Step. We're exchanging them.
+\___/\___     /\___/
+ ___  __|____/  ___
+/m*b\/  |______/m*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
 /mab\          /mab\ - 5 Step. Mixing again with secret keys and that will be THE SHARED KEY.
@@ -48,9 +48,9 @@ Part 1(getting the base)
 \___/          \___/
  _|_            _|_
 /m*a\          /m*b\ - 3 Step. We're getting mixed keys.
-\___/\____    /\___/
- ___   __|___/  ___
-/m*b \/  |_____/m*a\ - 4 Step. We're exchanging them.
+\___/\___     /\___/
+ ___  __|____/  ___
+/m*b\/  |______/m*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
 /mab\          /mab\ - 5 Step. Mixing again with secret keys and that will be THE BASE NUM.
@@ -66,9 +66,9 @@ h = mab    // 'h' is our base num(just to make easier).
 \___/          \___/
  _|_            _|_
 /h*a\          /h*b\ - 3 Step. We're mixing the base with secret keys.
-\___/\____    /\___/
- ___   __|___/  ___
-/h*b \/  |_____/h*a\ - 4 Step. We're exchanging them.
+\___/\___     /\___/
+ ___  __|____/  ___
+/h*b\/  |______/h*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
 /hab\          /hab\ - 5 Step. Mixing again with secret keys and that will be THE SHARED SECRET.
