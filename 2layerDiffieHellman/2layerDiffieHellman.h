@@ -172,7 +172,7 @@ namespace Red {
              * @brief power_2_pub
              *
              * Serves to generate a key using a, b, P.
-             * Used only in part 2.
+             * Used only for getting a public value in part 2.
              *
              * @param a Number which we will modificate.
              * @param b Chosen private key.
@@ -235,7 +235,7 @@ namespace Red {
              * @brief power_2_sync
              *
              * Serves to generate a key using a, b, P.
-             * Used only in part 2.
+             * Used only for getting the end key pair in part 2.
              *
              * @param a Number which we will modificate.
              * @param b Chosen private key.
