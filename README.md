@@ -10,13 +10,13 @@ This is my conception, implementation and tests of advanced(2-layer) _DiifieHell
 
 ## Why I decided to concept that?
 
-I was understanding how _DiffieHellman_ works and some time later I thought, _DH_ is really good for making _secure server-client messaging channels_, but _I did have an idea_ how to make the algorithm longer but get an opportunity _to hide the base number_ you use. That makes it _more difficult to calculate the shared key_.
+I was understanding how _DiffieHellman_ works and some time later I thought, _DH_ is really good for making _secure client-server messaging channels_, but _I did have an idea_ how to make the algorithm longer but get an opportunity _to hide the base number_ you use. That makes it _more difficult to calculate the shared key_.
 
 ## How it works by DH colors?
 
-Basically, _it is the DH_ but where that firstly calculates _the base number_, and _the shared key_ after that. <br/>
+Basically, _it is the DH_ but where that firstly calculates _the base number_, and _the shared key_ after that. So, that is why it's named _"2-layer DiffieHellman"_. <br/>
 
-So, here you can see the standard DiffieHellman algorithm:
+So, here you can see the standard _DiffieHellman_ algorithm:
 
 ```
 Diffie-Hellman(colors)
@@ -34,8 +34,8 @@ Diffie-Hellman(colors)
 \___/          \___/
 ```
 
-I'm sure you know it, so, I wrote it here to make it easier to compare with my 2-layer DH. <br/>
-Let's have a look of 2-layer DiffieHellman:
+I'm sure you know it, so, I wrote it here to make it easier to compare with my _2-layer DH_. <br/>
+Let's have a look of _2-layer DiffieHellman_:
 
 ```
 2-layer DiffieHellman(colors)
