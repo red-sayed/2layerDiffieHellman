@@ -26,7 +26,7 @@ Diffie-Hellman(colors)
  _|_            _|_
 /m*a\          /m*b\ - 3 Step. We're getting mixed keys.
 \___/\____    /\___/
- ___  ___|___/  ___
+ ___   __|___/  ___
 /m*b \/  |_____/m*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
@@ -49,7 +49,7 @@ Part 1(getting the base)
  _|_            _|_
 /m*a\          /m*b\ - 3 Step. We're getting mixed keys.
 \___/\____    /\___/
- ___  ___|___/  ___
+ ___   __|___/  ___
 /m*b \/  |_____/m*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
@@ -67,7 +67,7 @@ h = mab    // 'h' is our base num(just to make easier).
  _|_            _|_
 /h*a\          /h*b\ - 3 Step. We're mixing the base with secret keys.
 \___/\____    /\___/
- ___  ___|___/  ___
+ ___   __|___/  ___
 /h*b \/  |_____/h*a\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
