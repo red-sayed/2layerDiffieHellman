@@ -47,13 +47,13 @@ Part 1(getting the base)
 / m \          / m \ - 1 Step. We have the same values at the beginning.
 \___/          \___/
  _|_            _|_
-/m*a\          /m*b\ - 3 Step. We're getting mixed keys.
+/m*x\          /m*y\ - 3 Step. We're getting mixed keys.
 \___/\___     /\___/
  ___  __|____/  ___
-/m*b\/  |______/m*a\ - 4 Step. We're exchanging them.
+/m*y\/  |______/m*x\ - 4 Step. We're exchanging them.
 \___/          \___/
  _|_            _|_
-/mab\          /mab\ - 5 Step. Mixing again with secret keys and that will be THE BASE NUM.
+/mxy\          /mxy\ - 5 Step. Mixing again with secret keys and that will be THE BASE NUM.
 \___/          \___/
 
 Part 2(getting the shared secret)
