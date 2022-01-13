@@ -59,7 +59,7 @@ Part 1(getting the base)
 Part 2(getting the shared secret)
 ---------------------------------
 
-h = mab    // 'h' is our base num(just to make easier).
+h = mxy    // 'h' is our base num(just to make easier).
 
  ___            ___
 / h \          / h \ - 1 Step. We have the same base, which is hidden for the Man-In-The-Middle(MITM).
