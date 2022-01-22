@@ -128,7 +128,7 @@ if (*u == 1) {
 Part 2(getting the shared secret)
 ---------------------------------
 
-SharedBase = m_base
+SharedBase = m_base // Just copied, let's abbreviate.
 
 1) Public keys.
 ~~~~~~~~~~~~~~~
