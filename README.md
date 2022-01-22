@@ -78,4 +78,4 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _base num_ is hidden now, secondly, this _DH_ is ~x2 more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get secure. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _base num_ is hidden now, secondly, this _DH_ is ~x2 more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
