@@ -90,6 +90,8 @@ It looks like this:
 2-layer DiffieHellman(math scheme)
 ==================================
 
+P = -1 // The max value of data type.
+
 Part 1(getting a base)
 ----------------------
 
@@ -97,9 +99,9 @@ Part 1(getting a base)
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic1 = 2 ** AliceKey1
+AlicePublic1 = 2 ** AliceKey1 mod P
 
-BobPublic1 = 2 ** BobKey1
+BobPublic1 = 2 ** BobKey1 mod P
 
 
 2) Symmetric base.
@@ -134,18 +136,18 @@ SharedBase = m_base // Just copied, let's abbreviate.
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic2 = SharedBase ** AliceKey2
+AlicePublic2 = SharedBase ** AliceKey2 mod P
 
-BobPublic2 = SharedBase ** BobKey2
+BobPublic2 = SharedBase ** BobKey2 mod P
 
 
 2) Symmetric Secret.
 ~~~~~~~~~~~~~~~~~~~~
 
 /// Getting the symmetric pair.
-AliceSymmetric = BobPublic2 ** AliceKey2
+AliceSymmetric = BobPublic2 ** AliceKey2 mod P
 
-BobSymmetric = AlicePublic2 ** BobKey2
+BobSymmetric = AlicePublic2 ** BobKey2 mod P
 
 
 /// Finally.
