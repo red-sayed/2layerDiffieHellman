@@ -155,4 +155,4 @@ AliceSymmetric = BobSymmetric
 --------------   ------------
 ```
 
-I am not using _Prime number_ exepting the one used to get _Shared Number_ in _Part 1_, because I want it _to be un-cutted in range_ while all operations, at the end especially.
+I am using _Prime number_ equal to _1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
