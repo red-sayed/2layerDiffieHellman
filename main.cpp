@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <math.h>
 #include <random>
 
 #include "2layerDiffieHellman/2layerDiffieHellman.h"

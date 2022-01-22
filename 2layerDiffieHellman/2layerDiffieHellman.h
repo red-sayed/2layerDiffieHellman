@@ -24,6 +24,7 @@
 // RedLibrary.
 #include "RedTypes.h"
 
+// Version.
 #define RED2LAYERDIFFIEHELLMAN_VERSION "1.0"
 
 // Kits.
@@ -61,7 +62,7 @@ namespace Red {
                      *m_a2; // Secret num for part 2.
 
             /// Local var.
-            INT_SIZE m_base; // Base for part 2.
+            unsigned short int m_base; // Base for part 2.
 
 
             ///
@@ -169,6 +170,69 @@ namespace Red {
             }
 
             /**
+             * @brief powerUSI
+             *
+             * Serves to generate a key using a, b, P.
+             * Uses only in part 1.
+             *
+             * @param a Number which we will modificate.
+             * @param b Chosen private key.
+             * @param P Result number.
+             *
+             * @return Generated key.
+             */
+            inline INT_SIZE * powerUSI(const unsigned short int *a, const INT_SIZE *b, const INT_SIZE *P) const {
+                if (*b == 1) {
+                    INT_SIZE *res = new INT_SIZE;
+                    *res = *a;
+                    return res;
+
+                } else {
+                    // Unfortunately we have to write a lot here, because there is no a good way to write it shorter.
+                    // So, let's do that!
+
+                    /// Need to get cpp_int version of base.
+                    boost::multiprecision::cpp_int a_c = boost::multiprecision::cpp_int(*a);
+
+                    /// And ui version of our exponent.
+                    Red::uint_t b_int = 0;
+
+                    {
+                        std::stringstream ss;
+                        ss << *b;
+                        ss >> b_int;
+                    }
+
+                    /// Let's get exponented 'a'...
+                    boost::multiprecision::cpp_int ab = boost::multiprecision::pow(a_c, b_int);
+
+                    /// Now we need cpp_int version of 'P'.
+                    boost::multiprecision::cpp_int p_c = 0;
+
+                    {
+                        std::stringstream ss;
+                        ss << *P;
+                        ss >> p_c;
+                    }
+
+                    /// Moded expenented 'a' is needed...
+                    boost::multiprecision::cpp_int abp = ab % p_c;
+
+                    /// Now we just need to convert it to the type we need.
+                    INT_SIZE *res = new INT_SIZE;
+
+                    {
+                        std::stringstream ss;
+                        ss << abp;
+                        ss >> *res;
+                    }
+
+                    /// Yay, we finished this.
+                    return res;
+                }
+            }
+
+            /**
              * @brief power_2_pub
              *
              * Serves to generate a key using a, b, P.
@@ -180,7 +244,7 @@ namespace Red {
              *
              * @return Generated key.
              */
-            inline INT_SIZE * power_2_pub(const INT_SIZE *a, const unsigned long long int& b, const INT_SIZE *P) const {
+            inline INT_SIZE * power_2_pub(const unsigned short int *a, const unsigned long long int& b, const INT_SIZE *P) const {
                 // Unfortunately we have to write a lot here, because there is no a good way to write it shorter.
                 // So, let's do that (again)!
 
@@ -379,7 +443,7 @@ namespace Red {
              */
             INT_SIZE * Part2_GetPublicValue() const {
                 if (m_mode == "manual") {
-                    return power(&this->m_base, this->m_a2, this->m_P);
+                    return powerUSI(&this->m_base, this->m_a2, this->m_P); // unsigned short int edition.
 
                 } else { // auto mode enabled && wrong usage.
                     if (m_mode == "auto mode enabled 140m") {
