@@ -56,13 +56,12 @@ namespace Red {
             const INT_SIZE m_G    = 2, // Base for part 1.
                            m_Pp1  = 5; // P num for part 1.
 
+            unsigned short int m_base; // Base for part 2.
+
             /// User's vars.
-            INT_SIZE *m_P,  // P num.
+            INT_SIZE *m_P,   // Prime num for part 2.
                      *m_a1, // Secret num for part 1.
                      *m_a2; // Secret num for part 2.
-
-            /// Local var.
-            unsigned short int m_base; // Base for part 2.
 
 
             ///
@@ -109,7 +108,7 @@ namespace Red {
             /**
              * @brief power
              *
-             * Serves to generate a key using a, b, P.
+             * Serves to generate a key using a, b.
              * Uses only in part 1.
              *
              * @param a Number which we will modificate.
@@ -264,62 +263,6 @@ namespace Red {
                 {
                    std::stringstream ss;
                    ss << *m_a2;
-                   ss >> b_int;
-                }
-
-                /// Let's get exponented 'a'...
-                boost::multiprecision::cpp_int ab = boost::multiprecision::pow(a_c, b_int);
-
-                /// Now we need cpp_int version of 'P'.
-                boost::multiprecision::cpp_int p_c = 0;
-
-                {
-                    std::stringstream ss;
-                    ss << *P;
-                    ss >> p_c;
-                }
-
-                /// Moded expenented 'a' is needed...
-                boost::multiprecision::cpp_int abp = ab % p_c;
-
-                /// Now we just need to convert it to the type we need.
-                INT_SIZE *res = new INT_SIZE;
-
-                {
-                    std::stringstream ss;
-                    ss << abp;
-                    ss >> *res;
-                }
-
-                /// Yay, we finished this.
-                return res;
-            }
-
-            /**
-             * @brief power_2_sync
-             *
-             * Serves to generate a key using a, b, P.
-             * Used only for getting the end key pair in part 2.
-             *
-             * @param a Number which we will modificate.
-             * @param b Chosen private key.
-             * @param P Result number.
-             *
-             * @return Generated key.
-             */
-            inline INT_SIZE * power_2_sync(const INT_SIZE *a, const INT_SIZE *b, const INT_SIZE *P) const {
-                // Unfortunately we have to write a lot here, because there is no a good way to write it shorter.
-                // So, let's do that (one more time)!
-
-                /// Need to get cpp_int version of base.
-                boost::multiprecision::cpp_int a_c = boost::multiprecision::cpp_int(*a);
-
-                /// And ui version of a random(if needed) exponent.
-                Red::uint_t b_int;
-
-                {
-                   std::stringstream ss;
-                   ss << *b;
                    ss >> b_int;
                 }
 
@@ -540,7 +483,7 @@ namespace Red {
              *
              * @param x Partner's key, which we got after exchange operation.
              *
-             * @return Final num
+             * @return Final num.
              */
             INT_SIZE * Part2_GetSymmetricSecret(INT_SIZE *x) const {
                 return power(x, this->m_a2, this->m_P);

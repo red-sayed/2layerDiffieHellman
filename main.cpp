@@ -6,11 +6,8 @@
 #include "2layerDiffieHellman/RedTypes.h"
 
 int main() {
-    Red::uint65536_t P, a1, a2, b1, b2;
+    Red::uint65536_t P = -1, a1, a2, b1, b2;
     srand(time(0));
-
-    P = -1; // A prime number P is taken
-    std::cout << "The value of P : " << P << std::endl;
 
     // Generating secrets.
     a1 = rand() % RED_2lDH_RANDOM_A1_KEY_336m + 2; // also there're _70m, _105m, _126m, _238m, _336.
@@ -19,7 +16,7 @@ int main() {
     b1 = 126; // rand() % RED_2lDH_RANDOM_A1_KEY_336m + 2;
     b2 = 20;
 
-    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2, RED_2lDH_1543m_AUTO); // Also there're _140m_, _280m_, _490m_, _693m_.
+    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2, RED_2lDH_140m_AUTO); // Also there're _140m_, _280m_, _490m_, _693m_, _1543m_.
     Red::TwoLayerDiffieHellman<Red::uint65536_t> Bob(&P, &b1, &b2); // Or use a custum one.
 
     std::cout << std::endl;
