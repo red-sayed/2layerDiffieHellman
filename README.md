@@ -6,7 +6,7 @@
 
 ## What is it?
 
-This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(2lDH) key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
+This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(2lDH) key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones if needed without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
 
@@ -78,4 +78,4 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but now, our _base num_ is hidden, and this _DH_ is ~x2 more secure(check out standards and tests).
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _base num_ is hidden now, secondly, this _DH_ is ~x2 more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get secure. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
