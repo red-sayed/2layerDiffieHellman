@@ -155,4 +155,4 @@ AliceSymmetric = BobSymmetric
 --------------   ------------
 ```
 
-I am using _Prime number_ equal to _1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
+I am using _Prime number_ equal to _-1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
