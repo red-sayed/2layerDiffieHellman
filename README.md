@@ -37,7 +37,7 @@ Diffie-Hellman(colors)
 \___/          \___/
 ```
 
-I'm sure you know it, so, I wrote it here to make it easier to compare with my _2-layer DH_. <br/>
+I'm sure you know it, so, I wrote it here to make it easier to compare with my _2-layer DH_. <br/><br/>
 Let's have a look of _2-layer DiffieHellman_:
 
 ```C
@@ -177,7 +177,7 @@ I made some _standards_ for each part to use _2lDH_ in way you need. *Let's chec
 
 > :warning: Also need to say that these ***standards*** were calculated on ***MacBook Air 2017 with Intel Core I5*** processor, that means that on typical anybody's calculator all of these operations ***will be made much faster*** or at least it will be spent +- not more time than I shown.
 
-> ✏️: _sqrt(max) was placed there to show the nums each side need to use as max value to get a private key and if they will equal to each other, to spend not more time than I shown._
+> ✏️: _sqrt(max) was placed there to show the nums each side need to use as max value to get a private key, and, if they will equal to each other, to spend not more time than I shown._
 <br/><br/>
 
 ### Part 1 (getting a base)
@@ -199,8 +199,8 @@ As it can use different bases, I've separated these tables.
 
 #### 140m
 
-| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
-|------|--------------------------------------|-----------|------------------------|
+| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+|------|--------------------------------------|-----------|----------------------------|
 | 2 | 70m | 8.366 | 2,577 |
 | 4 | 35m | 5.916 | 2,671 |
 | 8 | 21m | 4.582 | 2,394 |
@@ -208,8 +208,8 @@ As it can use different bases, I've separated these tables.
 
 #### 280m
 
-| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
-|------|--------------------------------------|-----------|------------------------|
+| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+|------|--------------------------------------|-----------|----------------------------|
 | 2 | 126m | 11.224 | 7,556 |
 | 4 | 70m | 8.366 | 8,081 |
 | 8 | 49m | 7.000 | 8,849 |
@@ -217,8 +217,8 @@ As it can use different bases, I've separated these tables.
 
 #### 490m
 
-| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
-|------|--------------------------------------|-----------|------------------------|
+| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+|------|--------------------------------------|-----------|----------------------------|
 | 2 | 238m | 15.427 | 20,362 |
 | 4 | 119m | 10.908 | 20,686 |
 | 8 | 77m | 8.774 | 19,613 |
@@ -226,8 +226,8 @@ As it can use different bases, I've separated these tables.
 
 #### 693m
 
-| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
-|------|--------------------------------------|-----------|------------------------|
+| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+|------|--------------------------------------|-----------|----------------------------|
 | 2 | 336m | 18.330 | 40,834 |
 | 4 | 161m | 12.688 | 41,172 |
 | 8 | 112m | 10.583 | 41,572 |
@@ -235,8 +235,8 @@ As it can use different bases, I've separated these tables.
 
 #### 1543m
 
-| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
-|------|--------------------------------------|-----------|------------------------|
+| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+|------|--------------------------------------|-----------|----------------------------|
 | 2 | 721m | 26.851 | 197,268 |
 | 4 | 364m | 19.078 | 199,839 |
 | 8 | 283m | 15.427 | 196,951 |
@@ -248,7 +248,7 @@ First of all, let me show that all _bases_ works:
 
 ![plot](./Screenshots/2lDH_different_bases.png)
 
-Secondly, let's get _the shared secret_ from _0 point_:
+And now, let's get _the shared secret_ from _0 point_:
 
 ![plot](./Screenshots/2lDH_1.png)
 ![plot](./Screenshots/2lDH_2.png)
