@@ -241,3 +241,18 @@ As it can use different bases, I've separated these tables.
 | 4 | 364m | 19.078 | 199,839 |
 | 8 | 283m | 15.427 | 196,951 |
 | 16 | 175m | 13.228 | 221,794 |
+
+## Example
+
+First of all, let me show that all _bases_ works:
+
+![plot](./Screenshots/2lDH_different_bases.png)
+
+Secondly, let's get _the shared secret_ from _0 point_:
+
+![plot](./Screenshots/2lDH_1.png)
+![plot](./Screenshots/2lDH_2.png)
+
+## Where to use?
+
+As you could understand, it can be used everywhere you need a secure channel(server-client applications for example), literally everywhere.
