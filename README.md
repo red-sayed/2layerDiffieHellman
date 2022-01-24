@@ -156,3 +156,43 @@ AliceSymmetric = BobSymmetric
 ```
 
 I am using _Prime number_ equal to _-1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
+
+## Standards
+
+I made some _standards_ for each part to use _2lDH_ in way you need. *Let's check them out.* <br/>
+
+> :warning: Also need to say that these ***standards*** were calculated on ***MacBook Air 2017 with Intel Core I5*** processor, that means that on typical anybody's calculator all of these operations ***will be made much faster*** or at least it will be spent +- not more time than I shown.
+
+> ✏️: _sqrt(max) was placed there to show the nums each side need to use as max value to get a private key and if they will equal to each other, to spend not more time than I shown._
+<br/><br/>
+
+### Part 1 (getting a base)
+
+| Standard(num of possible variations, millions)| sqrt(max) | base | Time spent(in seconds) |
+|-----------------------------------------------|-----------|------|------------------------|
+| 70m | 8.366 | 2 | 4,127 |
+| 105m | 10.246 | 2 | 8,525 |
+| 126m | 11.224 | 2 | 11,799 |
+| 238m | 15.427 | 2 | 38,475 |
+| 336m | 18.330 | 2 | 71,926 |
+
+5 Standards for _Part 1_. I think that's enough to start, but maybe will add more later. *Let's continue with _Part 2_*.
+<br/><br/>
+
+### Part 2 (getting the shared secret)
+
+As it can use different bases, I've separated these tables.
+
+#### 140m
+
+| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
+|------|--------------------------------------|-----------|------------------------|
+| 2 | 70m | 8.366 | 2,577 |
+| 4 | 35m | 5.916 | 2,671 |
+| 8 | 21m | 4.582 | 2,394 |
+| 16 | 14m | 3.741 | 2,117 |
+
+#### 280m
+
+| base | num of possible variations, millions | sqrt(max) | Time spent(in seconds) |
+|------|--------------------------------------|-----------|------------------------|
