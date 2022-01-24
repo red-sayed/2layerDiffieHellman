@@ -6,7 +6,9 @@
 
 ## What is it?
 
-This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ if abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones if needed without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
+This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ if abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones if needed without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
+Original DiffieHellman is [_here_.](https://github.com/vladimirrogozin/DiffieHellman)<br/>
+It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
 
@@ -156,6 +158,18 @@ AliceSymmetric = BobSymmetric
 ```
 
 I am using _Prime number_ equal to _-1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
+
+The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(or at least toooooooooo difficult, as difficult that useless):
+
+```C
+Est. chance of getting the one we need = lim[x->0]
+```
+
+As we use _2lDH_ that is like 2x _DiffieHellman_, that can be wrote as funny math like:
+
+```C
+Est. chance of getting the one we need = lim[x->0] / 2
+```
 
 ## Standards
 
