@@ -84,7 +84,7 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ is ~x2 more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ edition is more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
 
 ## Math behind it
 
@@ -112,22 +112,16 @@ BobPublic1 = 2 ** BobKey1 mod P
 ~~~~~~~~~~~~~~~~~~
 
 /// Getting the same reminder.
-AliceShared = BobPublic1 ** AliceKey1 mod 5
+AliceShared = BobPublic1 ** AliceKey1 mod 2
 
-BobShared = AlicePublic1 ** BobKey1 mod 5
+BobShared = AlicePublic1 ** BobKey1 mod 2
 
-/// Getting a base.
-if (*u == 1) {
+/// Getting a base num.
+if (*u == 0) {
     m_base = 2;
-    
-} else if (*u == 2) {
-    m_base = 4;
 
-} else if (*u == 3) {
-    m_base = 8;
-
-} else if (*u == 4) {
-    m_base = 16;
+} else if (*u == 1) {
+    m_base = 3;
 }
 
 
@@ -177,12 +171,16 @@ Est. chance of getting the one we need = lim[x->0] / 2
 
 I made some _standards_ for each part to use _2lDH_ in way you need. *Let's check them out.* <br/>
 
-> :warning: Also need to say that these ***standards*** were calculated on ***MacBook Air 2017 with Intel Core I5*** processor, that means that on typical anybody's calculator all of these operations ***will be made much faster*** or at least it will be spent +- not more time than I shown.
+> :warning: Also need to say that these ***parts*** were calculated on different machines, but I think that is good, let's get a look of such a typical calculators:
+>
+> ***Part 1:*** 💻 [***MacBook Air 2017 with Intel core I5 processor***] Simple and reliable, historical machine imo.<br/>
+>
+> ***Part 2:*** 💻 [***MacBook Air 2020 with M1 processor***] Typical anybody's calculator, all of these operations ***will take +- the same time*** ;).
 
-> ✏️: _sqrt(max) was placed there to show the nums each side need to use as max value to get a private key, and, if they will equal to each other, to spend not more time than I shown._
+> ✏️: _sqrt(max) was placed there to show the nums each side need to use as max value to get a private key in time <= than I shown._
 <br/><br/>
 
-### Part 1 (getting a base)
+### Part 1 (getting a base) [Intel core I5]
 
 | Standard(num of possible variations, millions)| sqrt(max) | base | Time spent(in seconds) |
 |-----------------------------------------------|-----------|------|------------------------|
@@ -195,7 +193,7 @@ I made some _standards_ for each part to use _2lDH_ in way you need. *Let's chec
 5 Standards for _Part 1_. I think that's enough to start, but maybe will add more later. *Let's continue with _Part 2_*.
 <br/><br/>
 
-### Part 2 (getting the shared secret)
+### Part 2 (getting the shared secret) [Apple Silicon M1]
 
 As it can use different bases, I've separated these tables.
 
@@ -203,10 +201,9 @@ As it can use different bases, I've separated these tables.
 
 | base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
 |------|--------------------------------------|-----------|----------------------------|
-| 2 | 70m | 8.366 | 2,577 |
-| 4 | 35m | 5.916 | 2,671 |
-| 8 | 21m | 4.582 | 2,394 |
-| 16 | 14m | 3.741 | 2,117 |
+| 2 | 36m | 8.366 | 2,577 |
+| 3 | 36m | 5.916 | 2,671 |
+
 
 #### 280m
 
