@@ -2,7 +2,7 @@
  * @file    2layerDiffieHellman.h
  * @brief   2layerDiffieHellman is a lib which implements advanced DiffieHellman's key exchange algorithm.
  *
- * Copyright (c) 2020-2021 Vladimir Rogozin (vladimir20040609@gmail.com)
+ * Copyright (c) 2020-forever Vladimir Rogozin (vladimir20040609@gmail.com)
  *
  * Distributed under the MIT License (MIT) (See accompanying file LICENSE.txt
  * or copy at http://opensource.org/licenses/MIT)
@@ -25,14 +25,14 @@
 #include "RedTypes.h"
 
 // Version.
-#define RED2LAYERDIFFIEHELLMAN_VERSION "1.0"
+#define RED2LAYERDIFFIEHELLMAN_VERSION "2.0"
 
 // Kits.
-#define RED_2lDH_140m_AUTO  "auto mode enabled 140m"
-#define RED_2lDH_280m_AUTO  "auto mode enabled 280m"
-#define RED_2lDH_490m_AUTO  "auto mode enabled 490m"
-#define RED_2lDH_693m_AUTO  "auto mode enabled 693m"
-#define RED_2lDH_1543m_AUTO "auto mode enabled 1543m"
+#define RED_2lDH_36m_AUTO  "auto mode enabled 36m"
+#define RED_2lDH_64m_AUTO  "auto mode enabled 64m"
+#define RED_2lDH_121m_AUTO "auto mode enabled 121m"
+#define RED_2lDH_256m_AUTO "auto mode enabled 256m"
+#define RED_2lDH_400m_AUTO "auto mode enabled 400m"
 
 // Rand() setups.
 #define RED_2lDH_RANDOM_A1_KEY_70m   8366
@@ -54,7 +54,7 @@ namespace Red {
 
             /// Local vars.
             const INT_SIZE m_G    = 2, // Base for part 1.
-                           m_Pp1  = 5; // P num for part 1.
+                           m_Pp1  = 2; // P num for part 1.
 
             unsigned short int m_base; // Base for part 2.
 
@@ -70,35 +70,20 @@ namespace Red {
 
             std::string m_mode; // Mode of secret key usage.
 
-            /// 140m kit.
-            const unsigned long long int m_range_140m_2  = 8366;
-            const unsigned long long int m_range_140m_4  = 5916;
-            const unsigned long long int m_range_140m_8  = 4582;
-            const unsigned long long int m_range_140m_16 = 3741;
+            /// 36m kit.
+            const unsigned long long int m_range_36m  = 6000;
 
-            /// 280m kit.
-            const unsigned long long int m_range_280m_2  = 11224;
-            const unsigned long long int m_range_280m_4  = 8366;
-            const unsigned long long int m_range_280m_8  = 7000;
-            const unsigned long long int m_range_280m_16 = 5916;
+            /// 64m kit.
+            const unsigned long long int m_range_64m  = 8000;
 
-            /// 490m kit.
-            const unsigned long long int m_range_490m_2  = 15427;
-            const unsigned long long int m_range_490m_4  = 10908;
-            const unsigned long long int m_range_490m_8  = 8774;
-            const unsigned long long int m_range_490m_16 = 7483;
+            /// 121m kit.
+            const unsigned long long int m_range_121m  = 11000;
 
-            /// 693m kit.
-            const unsigned long long int m_range_693m_2  = 18330;
-            const unsigned long long int m_range_693m_4  = 12688;
-            const unsigned long long int m_range_693m_8  = 10583;
-            const unsigned long long int m_range_693m_16 = 9165;
+            /// 256m kit.
+            const unsigned long long int m_range_256m  = 16000;
 
-            /// 1543m kit.
-            const unsigned long long int m_range_1543m_2  = 26851;
-            const unsigned long long int m_range_1543m_4  = 19078;
-            const unsigned long long int m_range_1543m_8  = 15427;
-            const unsigned long long int m_range_1543m_16 = 13228;
+            /// 400m kit.
+            const unsigned long long int m_range_400m  = 20000;
 
 
             //
@@ -250,7 +235,7 @@ namespace Red {
                 /// Need to get cpp_int version of base.
                 boost::multiprecision::cpp_int a_c = boost::multiprecision::cpp_int(*a);
 
-                /// And ui version of a random(if needed) exponent.
+                /// And ui version of a random exponent.
                 srand(time(0));
                 Red::uint_t b_int;
 
@@ -360,17 +345,11 @@ namespace Red {
                 u = power(x, this->m_a1, &this->m_Pp1);
 
                 /// Getting a base num.
-                if (*u == 1) {
+                if (*u == 0) {
                     m_base = 2;
 
-                } else if (*u == 2) {
-                    m_base = 4;
-
-                } else if (*u == 3) {
-                    m_base = 8;
-
-                } else if (*u == 4) {
-                    m_base = 16;
+                } else if (*u == 1) {
+                    m_base = 3;
 
                 } else {
                     throw "[\033[91m2layerDiffieHellman\033[0m]: hello from here!";
@@ -389,89 +368,23 @@ namespace Red {
                     return powerUSI(&this->m_base, this->m_a2, this->m_P); // unsigned short int edition.
 
                 } else { // auto mode enabled && wrong usage.
-                    if (m_mode == "auto mode enabled 140m") {
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_2, this->m_P);
+                    if (m_mode == "auto mode enabled 36m") {
+                        return power_2_pub(&this->m_base, this->m_range_36m, this->m_P);
 
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_4, this->m_P);
+                    } else if (m_mode == "auto mode enabled 64m") {
+                        return power_2_pub(&this->m_base, this->m_range_64m, this->m_P);
 
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_8, this->m_P);
+                    } else if (m_mode == "auto mode enabled 121m") {
+                        return power_2_pub(&this->m_base, this->m_range_121m, this->m_P);
 
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_16, this->m_P);
-                        }
+                    } else if (m_mode == "auto mode enabled 256m") {
+                        return power_2_pub(&this->m_base, this->m_range_256m, this->m_P);
 
-                    } else if (m_mode == "auto mode enabled 280m") {
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_280m_2, this->m_P);
+                    } else if (m_mode == "auto mode enabled 400m") {
+                        return power_2_pub(&this->m_base, this->m_range_400m, this->m_P);
 
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_280m_4, this->m_P);
-
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_280m_8, this->m_P);
-
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_280m_16, this->m_P);
-                        }
-
-                    } else if (m_mode == "auto mode enabled 490m") {
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_490m_2, this->m_P);
-
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_490m_4, this->m_P);
-
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_490m_8, this->m_P);
-
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_490m_16, this->m_P);
-                        }
-
-                    } else if (m_mode == "auto mode enabled 693m") {
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_693m_2, this->m_P);
-
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_693m_4, this->m_P);
-
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_693m_8, this->m_P);
-
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_693m_16, this->m_P);
-                        }
-
-                    } else if (m_mode == "auto mode enabled 1543m") {
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_1543m_2, this->m_P);
-
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_1543m_4, this->m_P);
-
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_1543m_8, this->m_P);
-
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_1543m_16, this->m_P);
-                        }
-
-                    } else { // As 140m mode.
-                        if (m_base == 2) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_2, this->m_P);
-
-                        } else if (m_base == 4) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_4, this->m_P);
-
-                        } else if (m_base == 8) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_8, this->m_P);
-
-                        } else if (m_base == 16) {
-                            return power_2_pub(&this->m_base, this->m_range_140m_16, this->m_P);
-                        }
+                    } else {
+                        return power_2_pub(&this->m_base, this->m_range_64m, this->m_P);
                     }
                 }
             }

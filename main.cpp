@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <random>
+#include <chrono>
 
 #include "2layerDiffieHellman/2layerDiffieHellman.h"
 #include "2layerDiffieHellman/RedTypes.h"
@@ -10,13 +11,13 @@ int main() {
     srand(time(0));
 
     // Generating secrets.
-    a1 = rand() % RED_2lDH_RANDOM_A1_KEY_336m + 2; // also there're _70m, _105m, _126m, _238m, _336.
-    a2 = 5;
+    a1 = 3; //rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2; // also there're _105m, _126m, _238m, _336m.
+    a2 = 6000;
 
-    b1 = 126; // rand() % RED_2lDH_RANDOM_A1_KEY_336m + 2;
-    b2 = 20;
+    b1 = 2; // rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2;
+    b2 = 6000;
 
-    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2, RED_2lDH_140m_AUTO); // Also there're _140m_, _280m_, _490m_, _693m_, _1543m_.
+    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2/*, RED_2lDH_36m_AUTO*/); // Also there're _64m_, _121m_, _256m_, _400m_.
     Red::TwoLayerDiffieHellman<Red::uint65536_t> Bob(&P, &b1, &b2); // Or use a custum one.
 
     std::cout << std::endl;
@@ -34,6 +35,8 @@ int main() {
     Alice.Part1_GetSymmetricBaseNum(Pb);
     Bob.Part1_GetSymmetricBaseNum(Pa);
 
+    auto start = std::chrono::system_clock::now();
+
     // Generating a num.
     Red::uint65536_t *ValueA = Alice.Part2_GetPublicValue();
     Red::uint65536_t *ValueB = Bob.Part2_GetPublicValue();
@@ -42,9 +45,13 @@ int main() {
     Red::uint65536_t *Sa = Alice.Part2_GetSymmetricSecret(ValueB);
     Red::uint65536_t *Sb = Bob.Part2_GetSymmetricSecret(ValueA);
 
+    auto duration = (std::chrono::system_clock::now() - start) * 0.000001;
+
     std::cout << "Secret key for the Alice is : " << *Sa << std::endl << std::endl << std::endl;
     std::cout << "Secret Key for the Bob is   : " << *Sb << std::endl;
     std::cout << std::endl << std::endl;
+
+    std::cout << "Time spent: " << duration.count() << " seconds, ~" << 1 / float(duration.count()) << " cycles/sec" << std::endl;
 
     // How to use one more time the 2lDH object?
     //
