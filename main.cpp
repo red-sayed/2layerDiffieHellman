@@ -11,14 +11,14 @@ int main() {
     srand(time(0));
 
     // Generating secrets.
-    a1 = 3; //rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2; // also there're _105m, _126m, _238m, _336m.
+    a1 = rand() % RED_2lDH_RANDOM_A1_KEY_70m; //rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2; // also there're _105m, _126m, _238m, _336m.
     a2 = 6000;
 
     b1 = 2; // rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2;
     b2 = 6000;
 
-    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2/*, RED_2lDH_36m_AUTO*/); // Also there're _64m_, _121m_, _256m_, _400m_.
-    Red::TwoLayerDiffieHellman<Red::uint65536_t> Bob(&P, &b1, &b2); // Or use a custum one.
+    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2/*, RED_2lDH_6k_AUTO*/); // Also there're _8k_, _11k_, _16k_, _20k_.
+    Red::TwoLayerDiffieHellman<Red::uint65536_t> Bob(&P, &b1, &b2); // Will set 8k automatically.
 
     std::cout << std::endl;
     std::cout << "The private keys('a1 : a2') for Alice : " << a1 << " : " << a2 << std::endl;
@@ -57,7 +57,7 @@ int main() {
     //
     // Like this:
     //
-    // Alice.Set(-newP-,-newA1-,-newA2-,-modeIfNeeded-);
+    // Alice.Set(-newP-,-newA1-,-newA2-,-mode-);
 
     // Freeing up memory.
     delete Pa;
