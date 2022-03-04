@@ -17,7 +17,7 @@ int main() {
     b1 = 2; // rand() % RED_2lDH_RANDOM_A1_KEY_70m + 2;
     b2 = 6000;
 
-    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2/*, RED_2lDH_6k_AUTO*/); // Also there're _8k_, _11k_, _16k_, _20k_.
+    Red::TwoLayerDiffieHellman<Red::uint65536_t> Alice(&P, &a1, &a2, RED_2lDH_16k_AUTO); // Also there're _8k_, _11k_, _16k_, _20k_.
     Red::TwoLayerDiffieHellman<Red::uint65536_t> Bob(&P, &b1, &b2); // Will set 8k automatically.
 
     std::cout << std::endl;
