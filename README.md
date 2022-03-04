@@ -6,15 +6,15 @@
 
 ## What is it?
 
-This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ if abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729 chars long, can work with bigger ones if needed without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
+This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729+ chars long without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
 Original DiffieHellman is [_here_.](https://github.com/vladimirrogozin/DiffieHellman)<br/>
 It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
 
-I was understanding how _DiffieHellman_ works and some time later I thought, _DH_ is really good for making _secure client-server messaging channels_, but _I did have an idea_ how to make the algorithm longer but get an opportunity _to hide the base number_ you use. That makes it _more difficult to calculate the shared key_.
+I was understanding how _DiffieHellman_ works and I thought, _DH_ is really good for making _secure client-server messaging channels_, but _I did have an idea_ how to make the algorithm longer but get an opportunity _to hide the base number_ you use and get a _really good level of safety_.
 
-## How it works by DH colors?
+## How _2lDH_ works by DH colors method?
 
 Basically, _it is the DH_, but 2lDH firstly calculates _the base number_, and _the shared key_ after that. So, that is why it was named _"2-layer DiffieHellman"_. <br/>
 
@@ -82,7 +82,7 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ edition is more secure(check out standards and tests), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ edition is more secure(it's _not as fast_ as _original DiffieHellman_), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
 
 ## Math behind it
 
@@ -110,40 +110,36 @@ BobPublic1 = 2 ** BobKey1 mod P
 ~~~~~~~~~~~~~~~~~~
 
 /// Getting the same reminder.
-AliceShared = BobPublic1 ** AliceKey1 mod 2
+AliceShared = BobPublic1 ** AliceKey1 mod 998 + 2 // Shared (E [2;100].
 
-BobShared = AlicePublic1 ** BobKey1 mod 2
+BobShared = AlicePublic1 ** BobKey1 mod 998 + 2 // Shared (E [2;100].
 
-/// Getting a base num.
-if (*u == 0) {
-    m_base = 2;
-
-} else if (*u == 1) {
-    m_base = 3;
-}
 
 
 Part 2(getting the shared secret)
 ---------------------------------
 
-SharedBase = m_base // Just copied, let's abbreviate.
+SharedBase is our base num.
 
 1) Public keys.
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic2 = SharedBase ** AliceKey2 mod P
-
-BobPublic2 = SharedBase ** BobKey2 mod P
-
+AlicePublic2 = SharedBase ** (rand() % (standard / log2(SharedBase))) + 1
+                             """""""""""""""""""""""""""""""""""""""""""" // Same.
+                               
+BobPublic2 = SharedBase ** (rand() % (standard / log2(SharedBase))) + 1
+                           """"""""""""""""""""""""""""""""""""""""""""   // Same.
 
 2) Symmetric Secret.
 ~~~~~~~~~~~~~~~~~~~~
 
 /// Getting the symmetric pair.
-AliceSymmetric = BobPublic2 ** AliceKey2 mod P
+AliceSymmetric = BobPublic2 ** (rand() % (standard / log2(SharedBase))) + 1
+                               """""""""""""""""""""""""""""""""""""""""""" // Same.
 
-BobSymmetric = AlicePublic2 ** BobKey2 mod P
+BobSymmetric = AlicePublic2 ** (rand() % (standard / log2(SharedBase))) + 1
+                               """""""""""""""""""""""""""""""""""""""""""" // Same.
 
 
 /// Finally.
@@ -151,14 +147,28 @@ AliceSymmetric = BobSymmetric
 --------------   ------------
 ```
 
-I am using _Prime number_ equal to _-1_, because I want the algorithm _to be un-cutted in range_ in all operations, at the end especially.
+In the example file I used _Prime number_ equal to _-1_, because I wanted the algorithm _to be un-cutted in range_ in all operations(I wanted to get a pair of fingerprints that can be used for encryption functions).
 
 The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(or at least toooooooooo difficult, as difficult that useless):
 
 ```C
+  6k.
+-------
+
+Time spent to calculate for example = 4s.
+
+Max value is about (2 ** (6.000 * 6.000)).
+
+Just imagine how much time that takes.
+Or calculate in a big num calculator.
+```
+<br/>
+So, as that is so, we can conclude:
+
+```C
 Est. chance of getting the one we need = lim[x->0]
 ```
-
+<br/>
 As we use _2lDH_ that is like 2x _DiffieHellman_, that can be wrote as funny math like:
 
 ```C
@@ -195,60 +205,27 @@ I made some _standards_ for each part to use _2lDH_ in way you need. *Let's chec
 
 As it can use different bases, I've separated these tables.
 
-#### 140m
+We have a problem in fact, I don't know how to calculate the nums here. They differs a lot(exponent can equal to 1, or to the max one), so, let me write just the range I got by executing the examples some times...
 
-| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
+#### Table
+
+| difficulcy mode | num of possible variations | sqrt(max) | Time spent(in seconds) |
 |------|--------------------------------------|-----------|----------------------------|
-| 2 | 36m | 8.366 | 2,577 |
-| 3 | 36m | 5.916 | 2,671 |
+| 6k | 36.000.000 | 6.000 | 0.8-4 |
+| 8k | 64.000.000 | 8.000 | 0-4 |
+| 11k | 121.000.000 | 11.000 | 1-??? |
+| 16k | 256.000.000 | 16.000 | 1-16 |
 
+So, it's possible to spend a lot of time calculating this.
 
-#### 280m
-
-| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
-|------|--------------------------------------|-----------|----------------------------|
-| 2 | 126m | 11.224 | 7,556 |
-| 4 | 70m | 8.366 | 8,081 |
-| 8 | 49m | 7.000 | 8,849 |
-| 16 | 35m | 5.916 | 8,435 |
-
-#### 490m
-
-| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
-|------|--------------------------------------|-----------|----------------------------|
-| 2 | 238m | 15.427 | 20,362 |
-| 4 | 119m | 10.908 | 20,686 |
-| 8 | 77m | 8.774 | 19,613 |
-| 16 | 56m | 7.483 | 19,165 |
-
-#### 693m
-
-| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
-|------|--------------------------------------|-----------|----------------------------|
-| 2 | 336m | 18.330 | 40,834 |
-| 4 | 161m | 12.688 | 41,172 |
-| 8 | 112m | 10.583 | 41,572 |
-| 16 | 84m | 9.165 | 39,664 |
-
-#### 1543m
-
-| base | num of possible variations, millions | sqrt(max) | Max time spend(in seconds) |
-|------|--------------------------------------|-----------|----------------------------|
-| 2 | 721m | 26.851 | 197,268 |
-| 4 | 364m | 19.078 | 199,839 |
-| 8 | 283m | 15.427 | 196,951 |
-| 16 | 175m | 13.228 | 221,794 |
 
 ## Example
 
-First of all, let me show that all _bases_ works:
-
-![plot](./Screenshots/2lDH_different_bases.png)
-
-And now, let's get _the shared secret_ from _0 point_:
+I had to spend 25 seconds to calculate a pair(16k mode):
 
 ![plot](./Screenshots/2lDH_1.png)
 ![plot](./Screenshots/2lDH_2.png)
+![plot](./Screenshots/2lDH_3.png)
 
 ## Where to use?
 
