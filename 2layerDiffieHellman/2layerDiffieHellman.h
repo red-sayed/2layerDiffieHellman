@@ -341,6 +341,9 @@ namespace Red {
                     ss << *u;
                     ss >> m_base;
                 }
+
+                /// And must do this.
+                delete u;
             }
 
             /**
