@@ -227,6 +227,8 @@ I had to spend 25 seconds to calculate a pair(16k mode):
 ![plot](./Screenshots/2lDH_2.png)
 ![plot](./Screenshots/2lDH_3.png)
 
+(I couldn't fit even one shared number in one terminal, haha).
+
 ## Where to use?
 
 As you could understand, it can be used everywhere you need a secure channel(server-client applications for example), literally everywhere.
