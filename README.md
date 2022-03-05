@@ -249,7 +249,6 @@ In fact this is the thing everyone should do in own vision to get to result need
 **Notes:**
  * _P_ number (_prime one_) works stable with ~197.290 characters long (From _'RedTypes.h'_: _'Red::uint524288_t'_).
  * Needs to understand that the _time of calculation rises as the secret key value rises_.
- * If you use any of integer types that _sizes as 2048 and more_, it will take a _HUGE AMOUNT OF TIME_ to calculate, use those only for _specific tasks_. 
  * _Secret key_ is restricted by uint max size in power function(function from boost is used there).
 
 ##
