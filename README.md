@@ -7,7 +7,7 @@
 ## What is it?
 
 This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729+ chars long without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
-Original DiffieHellman is [_here_.](https://github.com/vladimirrogozin/DiffieHellman)<br/>
+Original DiffieHellman is [_here_.](https://github.com/red-sayed/DiffieHellman)<br/>
 It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
@@ -239,9 +239,9 @@ Good question, not difficult in fact:
 
 * 1.) We're getting the same keys.(Full 2lDH cycle)
 * 2.) Now, we have the same keys. We need to get an encrypted channel, how to do that? My answers are here: <br/>
-** 1.) [_AES standard_](https://github.com/vladimirrogozin/AES_Implementation). <br/>
+** 1.) [_AES standard_](https://github.com/red-sayed/AES_Implementation). <br/>
 ** 2.) [_RES standard (mine one, quality of Red)_](https://github.com/Red-company/RES_Implementation). <br/>
-You can use _DH_ shared key as a key or to make it x2 longer with [_my simple encryption algorithm(Va1)_](https://github.com/vladimirrogozin/Va1) and after that use the result to get a hashed sum, or to get a hash, and _cut/expand_ it to the length you need([_Sha256_](https://github.com/vladimirrogozin/Sha256)).
+You can use _DH_ shared key as a key or to make it x2 longer with [_my simple encryption algorithm(Va1)_](https://github.com/red-sayed/Va1) and after that use the result to get a hashed sum, or to get a hash, and _cut/expand_ it to the length you need([_Sha256_](https://github.com/red-sayed/Sha256)).
 
 In fact this is the thing everyone should do in own vision to get to result needed. Hope you will do that.
 
