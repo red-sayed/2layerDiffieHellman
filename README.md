@@ -110,9 +110,9 @@ BobPublic1 = 2 ** BobKey1 mod P
 ~~~~~~~~~~~~~~~~~~
 
 /// Getting the same reminder.
-AliceShared = BobPublic1 ** AliceKey1 mod 998 + 2 // Shared (E [2;100].
+AliceShared = BobPublic1 ** AliceKey1 mod 998 + 2 // Shared (E [2;1000].
 
-BobShared = AlicePublic1 ** BobKey1 mod 998 + 2 // Shared (E [2;100].
+BobShared = AlicePublic1 ** BobKey1 mod 998 + 2 // Shared (E [2;1000].
 
 
 
