@@ -12,7 +12,7 @@ It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
 
-I was understanding how _DiffieHellman_ works and I thought, _DH_ is really good for making _secure client-server messaging channels_, but _I did have an idea_ how to make the algorithm longer but get an opportunity _to hide the base number_ you use and get a _really good level of safety_.
+I was understanding how _DiffieHellman_ works and I thought, _DH_ is really good for making _secure client-server messaging channels_, but _I did have an idea_ how to make the algorithm longer(and safer) and get an opportunity _to hide the base number_ you use.
 
 ## How _2lDH_ works by DH colors method?
 
@@ -37,7 +37,7 @@ Diffie-Hellman(colors)
 \___/          \___/
 ```
 
-I'm sure you know it, so, I wrote it here to make it easier to compare with my _2-layer DH_. <br/><br/>
+I'm sure you know it, so, I wrote it here to make it easier to compare with _2-layer DH_. <br/><br/>
 Let's have a look of _2-layer DiffieHellman_:
 
 ```C
@@ -82,7 +82,7 @@ Shared key = hab
 ----------
 ```
 
-So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ edition is more secure(it's _not as fast_ as _original DiffieHellman_), and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_.
+So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, but, first of all, our _Base Num_ is hidden now, secondly, this _DH_ edition is now safed from log function and, thirdly, we spend _reasonable time_ to get well secured. In fact, there are some _difficulcy modes_ in this library, which gives it an _ability_ to it to be rather _wide-usable_(from IoT to infrastructure-level apps).
 
 ## Math behind it
 
@@ -147,17 +147,19 @@ AliceSymmetric = BobSymmetric
 --------------   ------------
 ```
 
-In the example file I used _Prime number_ equal to _-1_, because I wanted the algorithm _to be un-cutted in range_ in all operations(I wanted to get a pair of fingerprints that can be used for encryption functions).
+In the example file I used _Prime number_ equal to _-1_, because I wanted the algorithm _to be un-cutted in range_ in all operations(I wanted to get a pair of fingerprints that can be used in encryption functions as a key).
 
 The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(or at least toooooooooo difficult, as difficult that useless):
 
 ```C
-  6k.
+  6k(unsafest one).
 -------
 
-Time spent to calculate for example = 4s.
+Average time spent to calculate(for example) = 1s.
 
 Max value is about (2 ** (6.000 * 6.000)).
+
+Key is one of [2;2**36m]. (With some exclusions).
 
 Just imagine how much time that takes.
 Or calculate in a big num calculator.
@@ -174,6 +176,8 @@ As we use _2lDH_ that is like 2x _DiffieHellman_, that can be wrote as funny mat
 ```C
 Est. chance of getting the one we need = lim[x->0] / 2
 ```
+
+In fact, to break this, first of all we need to capture all packets related to the protocol and to perform all calculations needed after that.
 
 ## Standards
 
