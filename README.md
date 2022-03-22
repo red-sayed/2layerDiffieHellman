@@ -218,7 +218,7 @@ We have a problem in fact, I don't know how to calculate the nums here. They dif
 | 6k | 36.000.000 | 6.000 | 0.8-4 |
 | 8k | 64.000.000 | 8.000 | 0-4 |
 | 11k | 121.000.000 | 11.000 | 1-??? |
-| 16k | 256.000.000 | 16.000 | 1-16 |
+| 16k | 256.000.000 | 16.000 | 1-26(?) |
 
 So, it's possible to spend a lot of time calculating this.
 
