@@ -4,6 +4,8 @@
 
 # 2x🔑🔑 2-layer DiffieHellman [![](https://img.shields.io/apm/l/vim-mode)](https://github.com/Red-company/RES_Implementation/blob/main/LICENSE.md)
 
+> ‼️ *Patenting in process.* Don't try to steal or you'll lose your money.
+
 ## What is it?
 
 This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729+ chars long without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
