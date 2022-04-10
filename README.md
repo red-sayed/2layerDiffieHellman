@@ -258,4 +258,5 @@ In fact this is the thing everyone should do in own vision to get to result need
  * _Secret key_ is restricted by uint max size in power function(function from boost is used there).
 
 ##
-All material in this repository is in the public domain.
+All material in this repository is in the public domain.<br/>
+With _**Copyright© ∞ [Vladimir Rogozin](https://github.com/red-sayed).**_
