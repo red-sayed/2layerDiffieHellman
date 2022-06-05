@@ -227,7 +227,7 @@ So, it's possible to spend a lot of time calculating this.
 
 ## Example
 
-I had to spend 25 seconds to calculate a pair(16k mode):
+I had to spend 26 seconds to calculate a pair(16k mode):
 
 ![plot](./Screenshots/2lDH_1.png)
 ![plot](./Screenshots/2lDH_2.png)
