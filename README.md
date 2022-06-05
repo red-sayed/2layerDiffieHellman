@@ -9,7 +9,7 @@
 ## What is it?
 
 This is my conception, implementation and tests of advanced(2-layer) _DiifieHellman_(_'2lDH'_ abbreviated) key exchange _protocol_ that works with _very long inegers_(like 19.729+ chars long without any problems). You can find an _example file(main.cpp)_ at this repository with it's description. <br/><br/>
-Original DiffieHellman is [_here_.](https://github.com/red-sayed/DiffieHellman)<br/>
+Original DiffieHellman is [_here_](https://github.com/red-sayed/DiffieHellman).<br/>
 It is also a part of [_RedLibrary_](https://github.com/Red-company/RedLibrary).
 
 ## Why I decided to concept that?
