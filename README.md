@@ -151,7 +151,7 @@ AliceSymmetric = BobSymmetric
 
 In the example file I used _Prime number_ equal to _-1_, because I wanted the algorithm _to be un-cutted in range_ in all operations(I wanted to get a pair of fingerprints that can be used in encryption functions as a key).
 
-The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(or at least toooooooooo difficult, as difficult that useless):
+The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(as difficult that useless):
 
 ```C
   6k(unsafest one).
