@@ -103,18 +103,18 @@ Part 1 (getting a base)
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic1 = 2 ** AliceKey1 mod P
+AlicePublic1 = (2 ** AliceKey1) mod P
 
-BobPublic1 = 2 ** BobKey1 mod P
+BobPublic1 = (2 ** BobKey1) mod P
 
 
 2) Symmetric base.
 ~~~~~~~~~~~~~~~~~~
 
 /// Getting the same reminder.
-AliceShared = BobPublic1 ** AliceKey1 mod 998 + 2 // Shared (E [2;1000].
+AliceShared = (BobPublic1 ** AliceKey1 mod 998 + 2) mod P1 // Shared (E [2;1000].
 
-BobShared = AlicePublic1 ** BobKey1 mod 998 + 2 // Shared (E [2;1000].
+BobShared = (AlicePublic1 ** BobKey1 mod 998 + 2) mod P1 // Shared (E [2;1000].
 
 
 
@@ -127,20 +127,20 @@ SharedBase is our base num.
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) % P
+AlicePublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) mod P2
                                """"""""""""""""""""""""""""""""""""""""""" // Same.
                                
-BobPublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) % P
+BobPublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) mod P2
                              """""""""""""""""""""""""""""""""""""""""""   // Same.
 
 2) Symmetric Secret.
 ~~~~~~~~~~~~~~~~~~~~
 
 /// Getting the symmetric pair.
-AliceSymmetric = (BobPublic2 ** (rand() % (standard / log2(SharedBase))) + 1) % P
+AliceSymmetric = (BobPublic2 ** (rand() % (standard / log2(SharedBase))) + 1) mod P2
                                  """"""""""""""""""""""""""""""""""""""""""" // Same.
 
-BobSymmetric = (AlicePublic2 ** (rand() % (standard / log2(SharedBase))) + 1) % P
+BobSymmetric = (AlicePublic2 ** (rand() % (standard / log2(SharedBase))) + 1) mod P2
                                  """"""""""""""""""""""""""""""""""""""""""" // Same.
 
 
