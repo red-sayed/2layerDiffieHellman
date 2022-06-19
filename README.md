@@ -127,21 +127,21 @@ SharedBase is our base num.
 ~~~~~~~~~~~~~~~
 
 /// Getting a public keys.
-AlicePublic2 = SharedBase ** (rand() % (standard / log2(SharedBase))) + 1
-                             """""""""""""""""""""""""""""""""""""""""""" // Same.
+AlicePublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) % P
+                               """"""""""""""""""""""""""""""""""""""""""" // Same.
                                
-BobPublic2 = SharedBase ** (rand() % (standard / log2(SharedBase))) + 1
-                           """"""""""""""""""""""""""""""""""""""""""""   // Same.
+BobPublic2 = (SharedBase ** (rand() % (standard / log2(SharedBase))) + 1) % P
+                             """""""""""""""""""""""""""""""""""""""""""   // Same.
 
 2) Symmetric Secret.
 ~~~~~~~~~~~~~~~~~~~~
 
 /// Getting the symmetric pair.
-AliceSymmetric = BobPublic2 ** (rand() % (standard / log2(SharedBase))) + 1
-                               """""""""""""""""""""""""""""""""""""""""""" // Same.
+AliceSymmetric = (BobPublic2 ** (rand() % (standard / log2(SharedBase))) + 1) % P
+                                 """"""""""""""""""""""""""""""""""""""""""" // Same.
 
-BobSymmetric = AlicePublic2 ** (rand() % (standard / log2(SharedBase))) + 1
-                               """""""""""""""""""""""""""""""""""""""""""" // Same.
+BobSymmetric = (AlicePublic2 ** (rand() % (standard / log2(SharedBase))) + 1) % P
+                                 """"""""""""""""""""""""""""""""""""""""""" // Same.
 
 
 /// Finally.
