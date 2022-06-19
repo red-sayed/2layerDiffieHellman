@@ -23,7 +23,7 @@ Basically, _it is the DH_, but 2lDH firstly calculates _the base number_, and _t
 So, here you can see the standard _DiffieHellman_ algorithm:
 
 ```C
-Diffie-Hellman(colors)
+Diffie-Hellman (colors)
 ======================
  ___            ___
 / m \          / m \ - // 1 Step. We have the same values at the beginning.
@@ -43,10 +43,10 @@ I'm sure you know it, so, I wrote it here to make it easier to compare with _2-l
 Let's have a look of _2-layer DiffieHellman_:
 
 ```C
-2-layer DiffieHellman(colors)
+2-layer DiffieHellman (colors)
 =============================
 
-Part 1(getting the base)
+Part 1 (getting the base)
 ------------------------
  ___            ___
 / m \          / m \ - // 1 Step. We have the same values at the beginning.
@@ -62,10 +62,10 @@ Part 1(getting the base)
 \___/          \___/
 
 
-Part 2(getting the shared secret)
+Part 2 (getting the shared secret)
 ---------------------------------
 
-h = mxy    // 'h' is our base num(wrote this just to make it easier).
+h = mxy    // 'h' is our base num (wrote this just to make it easier).
 
  ___            ___
 / h \          / h \ - // 1 Step. We have the same base, which is hidden for the Man-In-The-Middle(MITM).
@@ -91,12 +91,12 @@ So, as you can see, that looks like a doubled _DiffieHellman_, and yeah, it is, 
 It looks like this:
 
 ```C
-2-layer DiffieHellman(math scheme)
+2-layer DiffieHellman (math scheme)
 ==================================
 
 P = -1 // The max value of data type.
 
-Part 1(getting a base)
+Part 1 (getting a base)
 ----------------------
 
 1) Public keys.
@@ -118,7 +118,7 @@ BobShared = AlicePublic1 ** BobKey1 mod 998 + 2 // Shared (E [2;1000].
 
 
 
-Part 2(getting the shared secret)
+Part 2 (getting the shared secret)
 ---------------------------------
 
 SharedBase is our base num.
@@ -154,14 +154,14 @@ In the example file I used _Prime number_ equal to _-1_, because I wanted the al
 The crucial thing in classic DiffieHellman is that you're exchanging something, that it's impossible to calculate sqrt from(as difficult that useless):
 
 ```C
-  6k(unsafest one).
+  6k (unsafest one).
 -------
 
 Average time spent to calculate(for example) = 1s.
 
 Max value is about (2 ** (6.000 * 6.000)).
 
-Key is one of [2;2**36m]. (With some exclusions).
+Key is one of [2; 2**36m]. (With some exclusions).
 
 Just imagine how much time that takes.
 Or calculate in a big num calculator.
