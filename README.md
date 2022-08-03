@@ -157,7 +157,7 @@ The crucial thing in classic DiffieHellman is that you're exchanging something, 
   6k (unsafest one).
 -------
 
-Average time spent to calculate(for example) = 1s.
+Average time spent to calculate(for example) = 0.01s.
 
 Max value is about (2 ** (6.000 * 6.000)).
 
